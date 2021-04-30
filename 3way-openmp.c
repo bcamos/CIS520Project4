@@ -10,7 +10,8 @@ int main() {
     double average;
     int sum, count=0;
     omp_set_num_threads(8);
-    filePointer = fopen("wiki_dump.txt", "r");
+    filePointer = fopen("/homes/dan/625/wiki_dump.txt", "r");
+    int lineNo = 0;
     if (filePointer == NULL){
         printf("File is not available \n");
     }
@@ -26,7 +27,8 @@ int main() {
             }
             else{
             	//	Display sum of each line along with number of characters and average
-            	printf("Sum = %d, Count = %d, Average = %0.2f\n", sum, count, average);
+		lineNo = lineNo + 1;
+            	printf("Line = %d, Sum = %d, Count = %d, Average = %0.2f\n", lineNo, sum, count, average);
             	sum = 0;
             	count = 0;
             }
