@@ -6,7 +6,7 @@
 #define BATCH_SIZE 1000000
 #define MAX_STRING 2001
 char lines[BATCH_SIZE];
-float global_average[BATCH_SIZE]
+float global_averages[BATCH_SIZE];
 float local_averages[BATCH_SIZE];
 int NUM_THREADS;
 
@@ -55,7 +55,7 @@ void calculate_averages(void *rank, int lastIdx)
     }
 }
 
-int main()
+int main(int argc, char* argv[])
 {
    int maxlines = 1000000;
    int i, lineCount, err;
@@ -98,13 +98,13 @@ int main()
 
    calculate_averages(&rank, lineCount);
 
-   MPI_Reduce(local_averages, global_average, BATCH_SIZE, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+   MPI_Reduce(local_averages, global_averages, BATCH_SIZE, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
 
    if (rank == 0)
    {
        for (i = 0; i < lineCount; i++)
        {
-           printf("%d: %.1f\n", i, global_average[i]);
+           printf("%d: %.1f\n", i, global_averages[i]);
        }       
    }
 
