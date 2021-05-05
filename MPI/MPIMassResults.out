@@ -1,0 +1,69 @@
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   dwarf46
+  Local device: mlx5_1
+--------------------------------------------------------------------------
+[dwarf46:19851] [[10509,0],0] ORTE_ERROR_LOG: Data unpack would read past end of buffer in file util/show_help.c at line 513
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   dwarf40
+  Local device: mlx5_1
+--------------------------------------------------------------------------
+[dwarf46:19853] 7 more processes have sent help message help-mpi-btl-openib.txt / error in device init
+[dwarf46:19853] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[dwarf40:07128] 31 more processes have sent help message help-mpi-btl-openib.txt / error in device init
+[dwarf40:07128] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[dwarf46:19851] 2 more processes have sent help message help-mpi-btl-openib.txt / error in device init
+[dwarf46:19851] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+DATA, 8, 7323.760000
+DATA, 1, 7442.585000
+DATA, 12, 7935.945000
+DATA, 20, 8698.835000
+DATA, 2, 8660.067000
+DATA, 4, 9749.721000
+DATA, 32, 9610.588000
+[dwarf36:18220:0:18220]    ud_iface.c:779  Fatal: transport error: Endpoint timeout
+==== backtrace (tid:  18220) ====
+ 0 0x0000000000021433 ucs_debug_print_backtrace()  /tmp/easybuild/UCX/1.8.0/GCCcore-9.3.0/ucx-1.8.0/src/ucs/debug/debug.c:653
+ 1 0x0000000000060555 uct_ud_ep_dispatch_err_comp()  /tmp/easybuild/UCX/1.8.0/GCCcore-9.3.0/ucx-1.8.0/src/uct/ib/ud/base/ud_iface.c:779
+ 2 0x0000000000060673 uct_ud_iface_dispatch_async_comps_do()  /tmp/easybuild/UCX/1.8.0/GCCcore-9.3.0/ucx-1.8.0/src/uct/ib/ud/base/ud_iface.c:801
+ 3 0x0000000000067040 uct_ud_iface_dispatch_zcopy_comps()  /tmp/easybuild/UCX/1.8.0/GCCcore-9.3.0/ucx-1.8.0/src/uct/ib/ud/base/ud_iface.h:452
+ 4 0x0000000000067040 uct_ud_verbs_iface_progress()  /tmp/easybuild/UCX/1.8.0/GCCcore-9.3.0/ucx-1.8.0/src/uct/ib/ud/verbs/ud_verbs.c:388
+ 5 0x000000000002799a ucs_callbackq_dispatch()  /tmp/easybuild/UCX/1.8.0/GCCcore-9.3.0/ucx-1.8.0/src/ucs/datastruct/callbackq.h:211
+ 6 0x000000000002799a uct_worker_progress()  /tmp/easybuild/UCX/1.8.0/GCCcore-9.3.0/ucx-1.8.0/src/uct/api/uct.h:2221
+ 7 0x000000000002799a ucp_worker_progress()  /tmp/easybuild/UCX/1.8.0/GCCcore-9.3.0/ucx-1.8.0/src/ucp/core/ucp_worker.c:1951
+ 8 0x0000000000005806 mca_pml_ucx_send()  ???:0
+ 9 0x00000000000a7ee7 ompi_coll_base_scatter_intra_basic_linear()  ???:0
+10 0x000000000008c05d MPI_Scatter()  ???:0
+11 0x00000000004024a4 main()  ???:0
+12 0x0000000000022555 __libc_start_main()  ???:0
+13 0x0000000000402269 _start()  ???:0
+=================================
+[dwarf36:18220] *** Process received signal ***
+[dwarf36:18220] Signal: Aborted (6)
+[dwarf36:18220] Signal code:  (-6)
+[dwarf36:18220] [ 0] /lib64/libc.so.6(+0x36400)[0x7f5914943400]
+[dwarf36:18220] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x7f5914943387]
+[dwarf36:18220] [ 2] /lib64/libc.so.6(abort+0x148)[0x7f5914944a78]
+[dwarf36:18220] [ 3] /opt/software/software/UCX/1.8.0-GCCcore-9.3.0/lib/libucs.so.0(ucs_fatal_error_message+0x55)[0x7f590b5b0085]
+[dwarf36:18220] [ 4] /opt/software/software/UCX/1.8.0-GCCcore-9.3.0/lib/libucs.so.0(ucs_fatal_error_format+0xde)[0x7f590b5b01fe]
+[dwarf36:18220] [ 5] /opt/software/software/UCX/1.8.0-GCCcore-9.3.0/lib/ucx/libuct_ib.so.0(+0x60555)[0x7f590b3ae555]
+[dwarf36:18220] [ 6] /opt/software/software/UCX/1.8.0-GCCcore-9.3.0/lib/ucx/libuct_ib.so.0(uct_ud_iface_dispatch_async_comps_do+0x113)[0x7f590b3ae673]
+[dwarf36:18220] [ 7] /opt/software/software/UCX/1.8.0-GCCcore-9.3.0/lib/ucx/libuct_ib.so.0(+0x67040)[0x7f590b3b5040]
+[dwarf36:18220] [ 8] /opt/software/software/UCX/1.8.0-GCCcore-9.3.0/lib/libucp.so.0(ucp_worker_progress+0x6a)[0x7f591007099a]
+[dwarf36:18220] [ 9] /opt/software/software/OpenMPI/4.0.3-GCC-9.3.0/lib/openmpi/mca_pml_ucx.so(mca_pml_ucx_send+0x106)[0x7f5912398806]
+[dwarf36:18220] [10] /opt/software/software/OpenMPI/4.0.3-GCC-9.3.0/lib/libmpi.so.40(ompi_coll_base_scatter_intra_basic_linear+0xd7)[0x7f591517eee7]
+[dwarf36:18220] [11] /opt/software/software/OpenMPI/4.0.3-GCC-9.3.0/lib/libmpi.so.40(PMPI_Scatter+0x10d)[0x7f591516305d]
+[dwarf36:18220] [12] /homes/bcamos/cis520/proj4/3way-MPI[0x4024a4]
+[dwarf36:18220] [13] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f591492f555]
+[dwarf36:18220] [14] /homes/bcamos/cis520/proj4/3way-MPI[0x402269]
+[dwarf36:18220] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node dwarf36 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------
