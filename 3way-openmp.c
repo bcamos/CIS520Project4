@@ -9,7 +9,7 @@ int main() {
     char ch;
     double average;
     int sum, count=0;
-    omp_set_num_threads(8);
+    omp_set_num_threads(16);
     filePointer = fopen("/homes/dan/625/wiki_dump.txt", "r");
     int lineNo = 0;
     if (filePointer == NULL){
